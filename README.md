@@ -9,5 +9,5 @@ El proyecto esta en el puerto 3000
 
 ## Rutas disponibles
 
-1. http://localhost:3000/
-2. http://localhost:3000/cart/
+1. http://localhost:3000/#
+2. http://localhost:3000/#/cart/
