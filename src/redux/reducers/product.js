@@ -1,4 +1,9 @@
-import { FETCH_PRODUCTS, FETCH_PRODUCTS_ERROR, LOADING } from '../actions/types'
+import {
+  FETCH_PRODUCTS,
+  FETCH_PRODUCTS_ERROR,
+  ORDER_PRODUCTS,
+  LOADING,
+} from '../actions/types'
 
 const initialState = {
   products: [],
@@ -20,6 +25,12 @@ export default (state = initialState, action) => {
         ...state,
         error: action.error,
         loading: false,
+      }
+    }
+    case ORDER_PRODUCTS: {
+      return {
+        ...state,
+        products: action.products,
       }
     }
     case LOADING: {

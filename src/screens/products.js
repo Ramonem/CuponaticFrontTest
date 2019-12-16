@@ -1,15 +1,17 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { Spin } from 'antd'
+import { Spin, Select } from 'antd'
 import Container from '../components/Container'
 import Text from '../components/Text'
-import { fetchProducts, manageCart } from '../redux/actions/'
+import { fetchProducts, orderProduct, manageCart } from '../redux/actions/'
 import CartComponent from '../components/CartComponent'
 import ProductComponent from '../components/ProductComponent'
+const { Option } = Select
 function Products({
   fetchProducts,
   manageCart,
   product: { loading, products },
+  orderProduct,
 }) {
   useEffect(() => {
     fetchProducts()
@@ -29,6 +31,28 @@ function Products({
             flexWrap="wrap"
             justifyContent="space-evenly"
           >
+            <Container
+              justifyContent="center"
+              alignItems="center"
+              width="100%"
+              p={10}
+              flexDirection="row"
+            >
+              <Text mr={10}>Ordenar por</Text>
+              <Select
+                defaultValue="titulo"
+                style={{ width: `25%` }}
+                onChange={order => orderProduct(order, products)}
+              >
+                <Option value="titulo">Titulo</Option>
+                <Option value="min_valor_oferta">Menor precio</Option>
+                <Option value="max_valor_oferta">Mayor precio</Option>
+                <Option value="calificaciones_numerica">
+                  Mejor calificación
+                </Option>
+                <Option value="geo">Menor distancia</Option>
+              </Select>
+            </Container>
             {products.map(product => (
               <ProductComponent
                 product={product}
@@ -46,4 +70,8 @@ function Products({
 
 const mapStateToProps = state => state
 
-export default connect(mapStateToProps, { fetchProducts, manageCart })(Products)
+export default connect(mapStateToProps, {
+  fetchProducts,
+  orderProduct,
+  manageCart,
+})(Products)
