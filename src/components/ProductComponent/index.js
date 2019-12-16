@@ -16,7 +16,7 @@ export default function ProductComponent({ product, manageCart }) {
       height="fit-content"
     >
       <Text fontWeight="bold">{product.titulo}</Text>
-      <img src={product.imagen_url} />
+      <img src={product.imagen_url} alt={product.titulo} />
       <Container flexDirection="row" alignItems="center">
         <Text mr="5px">Calificación: </Text>
         <StarRatings

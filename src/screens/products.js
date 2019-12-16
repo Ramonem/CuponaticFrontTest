@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { Spin, Button } from 'antd'
-import StarRatings from 'react-star-ratings'
+import { Spin } from 'antd'
 import Container from '../components/Container'
 import Text from '../components/Text'
 import { fetchProducts, manageCart } from '../redux/actions/'
